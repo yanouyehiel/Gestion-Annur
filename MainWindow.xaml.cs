@@ -19,15 +19,20 @@ namespace Gestion_Annur
         {
             if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(txtPassword.Password))
             {
-                bool result = this.ConnectUser(txtEmail.Text, txtPassword.Password);
+                /*bool result = this.ConnectUser(txtEmail.Text, txtPassword.Password);
                 if (result)
                 {
                     MessageBox.Show("Identifiants corrects");
+                    Home h = new Home();
+                    h.Show();
+                    this.Hide();
                 }
                 else
                 {
                     MessageBox.Show("Identifiants incorrects");
-                }
+                }*/
+                Home h = new Home();
+                h.Show();
             }
             else
             {
@@ -37,7 +42,7 @@ namespace Gestion_Annur
 
         public bool ConnectUser(string matricule, string password)
         {
-            string connectionString = "server=localhost;database=annur;user=root;password=";
+            string connectionString = "Server=localhost;Database=annur;User Id=root;Password=";
             MySqlConnection connection = new MySqlConnection(connectionString);
 
             try
@@ -53,12 +58,10 @@ namespace Gestion_Annur
 
                 if (reader.HasRows)
                 {
-                    
                     return true;
                 }
                 else
                 {
-                    
                     return false;
                 }
             }

@@ -3,12 +3,126 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-        xmlns:iconPacksExtras="http://metro.mahapps.com/winfx/xaml/iconpacks/extras"
-        xmlns:local="clr-namespace:Gestion_Annur"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
-        Title="Home" Height="450" Width="800">
+        Title="HOME" Height="600" Width="1000" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        AllowsTransparency="True" Background="Transparent" ResizeMode="CanMinimize">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Menu Gauche -->
+        <Border CornerRadius="10 0 0 10">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#223266" Offset="0" />
+                    <GradientStop Color="#27396b" Offset="1" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <StackPanel>
+                <!-- Username -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 35 0 0">
+                    <Border CornerRadius="10" Width="40" Height="40">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                                <GradientStop Color="#27396b" Offset="0" />
+                                <GradientStop Color="#f2f2f2" Offset="1" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+
+                        <TextBlock Text="YY" Foreground="#ffffff" FontSize="22" FontWeight="SemiBold"
+                               TextAlignment="Center" VerticalAlignment="Center" Margin="3 0 0 2"/>
+                    </Border>
+
+                    <StackPanel Margin="10 0 0 0" VerticalAlignment="Center">
+                        <TextBlock Text="Yehiel Yanou" FontSize="15" Margin="0 0 0 5" Foreground="#f2f2f2" />
+                        <TextBlock Text="Beta 1.1" FontSize="11" Foreground="#7788bf" />
+                    </StackPanel>
+                </StackPanel>
+
+                <Separator Height="0.8" Margin="20 30" Background="#46558a" />
+
+                <!-- Menu Buttons -->
+                <Button Style="{StaticResource menuButtonActive}">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="Home" Style="{StaticResource menuButtonIcon}" />
+                        <TextBlock Text="Dashboard" Style="{StaticResource menuButtonText}" />
+                    </StackPanel>
+                </Button>
+                <Button Style="{StaticResource menuButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="File" Style="{StaticResource menuButtonIcon}" />
+                        <TextBlock Text="Listing" Style="{StaticResource menuButtonText}" />
+                    </StackPanel>
+                </Button>
+                <Button Style="{StaticResource menuButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="Envelope" Style="{StaticResource menuButtonIcon}" />
+                        <TextBlock Text="Messages" Style="{StaticResource menuButtonText}" />
+                    </StackPanel>
+                </Button>
+                <Button Style="{StaticResource menuButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="HouseTsunami" Style="{StaticResource menuButtonIcon}" />
+                        <TextBlock Text="Gestion du matériels" Style="{StaticResource menuButtonText}" />
+                    </StackPanel>
+                </Button>
+                <Button Style="{StaticResource menuButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="ChartArea" Style="{StaticResource menuButtonIcon}" />
+                        <TextBlock Text="Statistiques" Style="{StaticResource menuButtonText}" />
+                    </StackPanel>
+                </Button>
+                <Button Style="{StaticResource menuButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <fa:IconImage Icon="PowerOff" Style="{StaticResource menuButtonIcon}" />
+                        <TextBlock Text="Deconnexion" Style="{StaticResource menuButtonText}" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <!-- Section Main -->
+        <Border Grid.Column="1" CornerRadius="0 10 10 0" MouseDown="Border_MouseDown">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                    <GradientStop Color="#41518f" Offset="0" />
+                    <GradientStop Color="#2c386c" Offset="1" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!-- Menu du haut -->
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 30 20">
+
+                    <Button Content="Aujourd'hui" Style="{StaticResource topMenuButton}" />
+                    <Button Content="Semaine" Style="{StaticResource topMenuButton}" Background="#31407b" Foreground="#f2f2f2" />
+                    <Button Content="Mois" Style="{StaticResource topMenuButton}" />
+                    <Button Content="Année" Style="{StaticResource topMenuButton}" />
+                </StackPanel>
+
+                <!-- Titre -->
+                <TextBlock Text="Bienvenu sur ParcInfo" FontSize="26" Foreground="#f2f2f2" HorizontalAlignment="Left" Margin="50 35 0 20" />
+
+                <!--Card Info -->
+                <Grid Grid.Row="1" Margin="50 20 15 40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </Grid>
+        </Border>
     </Grid>
 </Window>
