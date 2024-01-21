@@ -1,0 +1,86 @@
+﻿<Window x:Class="Gestion_Annur.Views.ModalAddStudent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Gestion_Annur.Views"
+        mc:Ignorable="d" Background="Transparent"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Inscrire un étudiant" Height="670" Width="500" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Entrer les informations de l'étudiant" Style="{StaticResource titleAddStudent}" />
+
+        <StackPanel Grid.Row="1">
+            <StackPanel Orientation="Horizontal" Margin="40 15">
+                <TextBlock Text="Noms" Style="{StaticResource labelInput}"/>
+                <TextBox x:Name="nom" materialDesign:HintAssist.Hint="Entrer le nom" Style="{StaticResource input}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="40 15">
+                <TextBlock Text="Prénoms" Style="{StaticResource labelInput}"/>
+                <TextBox x:Name="prenom" materialDesign:HintAssist.Hint="Entrer le prénom" Style="{StaticResource input}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="40 15">
+                <TextBlock Text="Email" Style="{StaticResource labelInput}"/>
+                <TextBox x:Name="email" materialDesign:HintAssist.Hint="Entrer l'email" Style="{StaticResource input}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="40 15">
+                <TextBlock Text="Téléphone" Style="{StaticResource labelInput}"/>
+                <TextBox x:Name="tel" materialDesign:HintAssist.Hint="Entrer le numéro de téléphone" Style="{StaticResource input}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="40 15">
+                <TextBlock Text="Date de naissance" Style="{StaticResource labelInput}"/>
+                <DatePicker x:Name="date_naissance" Style="{StaticResource datePicker}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="40 15">
+                <TextBlock Text="Téléphone d'urgence" Style="{StaticResource labelInput}"/>
+                <TextBox x:Name="tel_urgence" materialDesign:HintAssist.Hint="Entrer le numéro de téléphone" Style="{StaticResource input}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="40 15">
+                <TextBlock Text="Plus grand diplome" Style="{StaticResource labelInput}"/>
+                <ComboBox x:Name="diplome" Style="{StaticResource combobox}" SelectedItem="{Binding DiplomeSelected, Mode=TwoWay}">
+                    <ComboBoxItem Content="CEP"/>
+                    <ComboBoxItem Content="BEPC"/>
+                    <ComboBoxItem Content="PROBATOIRE"/>
+                    <ComboBoxItem Content="BACALAUREAT"/>
+                    <ComboBoxItem Content="BTS"/>
+                    <ComboBoxItem Content="DUT"/>
+                    <ComboBoxItem Content="LICENCE"/>
+                    <ComboBoxItem Content="MASTER"/>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="40 10">
+                <TextBlock Text="Filière" Style="{StaticResource labelInput}"/>
+                <ComboBox x:Name="filiere" Style="{StaticResource combobox}" SelectedItem="{Binding FiliereSelected, Mode=TwoWay}">
+                    <ComboBoxItem Content="ASSISTANTE DE DIRECTION"/>
+                    <ComboBoxItem Content="DEVELOPPEMENT D'APPLICATIONS"/>
+                    <ComboBoxItem Content="INFOGRAPHIE"/>
+                    <ComboBoxItem Content="MONTAGE AUDIOVISUEL"/>
+                    <ComboBoxItem Content="MARKETING DIGITAL ET COMMUNICATION"/>
+                    <ComboBoxItem Content="TRANSFORMATION, CONDITIONNEMENT, ETIQUETAGE ET TRACABILITE"/>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="40 10">
+                <TextBlock Text="Nom du père" Style="{StaticResource labelInput}"/>
+                <TextBox x:Name="nom_pere" materialDesign:HintAssist.Hint="Entrer le nom du père" Style="{StaticResource input}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="40 10 40 0">
+                <TextBlock Text="Nom de la mère" Style="{StaticResource labelInput}"/>
+                <TextBox x:Name="nom_mere" materialDesign:HintAssist.Hint="Entrer le nom de la mère" Style="{StaticResource input}"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" Margin="0 15">
+            <Button x:Name="addStudent" Style="{StaticResource btnAdd}"
+                materialDesign:ButtonAssist.CornerRadius="20"
+                Click="addStudent_Click" Content="Inscrire">
+
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

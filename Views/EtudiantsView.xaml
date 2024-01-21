@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="Gestion_Annur.Views.EtudiantsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Gestion_Annur.Views"
+             mc:Ignorable="d" Height="650" Width="1030">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Section du haut -->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,50,0" Grid.Column="1">
+                <Button x:Name="addEtudiantBtn" Click="addEtudiantBtn_Click" Content="Ajouter un étudiant" Style="{StaticResource topButton}" />
+            </StackPanel>
+
+            <!-- Titre -->
+            <TextBlock Text="Listing de tous les étudiants" FontSize="26" Foreground="#f2f2f2" HorizontalAlignment="Left" Margin="46,28,0,28" />
+        </Grid>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,50,20" Grid.Column="1">
+
+            <Button Content="Par filière" Style="{StaticResource topButton}"/>
+            <Button Content="Par nom" Style="{StaticResource topButton}" Background="White" Foreground="#31407b"/>
+            <Button Content="Par solvabilité" Style="{StaticResource topButton}"/>
+        </StackPanel>
+
+        <Grid Grid.Row="2">
+            <DataGrid CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
+                RowStyle="{DynamicResource DataGridRowStyle1}" RowHeaderStyle="{DynamicResource DataGridRowHeaderStyle1}" 
+                Style="{DynamicResource DataGridStyle1}" x:Name="dataGrid" IsReadOnly="True" AutoGenerateColumns="False" Margin="50 0 50 50"
+                      PreviewMouseRightButtonDown="dataGrid_PreviewMouseRightButtonDown" IsEnabled="True">
+                
+            </DataGrid>
+        </Grid>
+    </Grid>
+</UserControl>

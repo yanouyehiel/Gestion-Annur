@@ -2,20 +2,21 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"      
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
-        Title="HOME" Height="600" Width="1000" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Title="HOME" Height="650" Width="1280" WindowStartupLocation="CenterScreen" WindowStyle="None"
         AllowsTransparency="True" Background="Transparent" ResizeMode="CanMinimize">
-    <Grid>
+    <Grid MouseDown="Grid_MouseDown">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <!-- Menu Gauche -->
-        <Border CornerRadius="10 0 0 10">
+        <Border CornerRadius="5 0 0 5">
             <Border.Background>
                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                     <GradientStop Color="#223266" Offset="0" />
@@ -47,37 +48,37 @@
                 <Separator Height="0.8" Margin="20 30" Background="#46558a" />
 
                 <!-- Menu Buttons -->
-                <Button Style="{StaticResource menuButtonActive}">
+                <Button Style="{StaticResource menuButtonActive}" Cursor="Hand" x:Name="menuDashboardBtn" Click="menuDashboardBtn_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Home" Style="{StaticResource menuButtonIcon}" />
                         <TextBlock Text="Dashboard" Style="{StaticResource menuButtonText}" />
                     </StackPanel>
                 </Button>
-                <Button Style="{StaticResource menuButton}">
+                <Button Style="{StaticResource menuButton}" Cursor="Hand" x:Name="menuEtudiantsBtn" Click="menuEtudiantsBtn_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="File" Style="{StaticResource menuButtonIcon}" />
-                        <TextBlock Text="Listing" Style="{StaticResource menuButtonText}" />
+                        <TextBlock Text="Etudiants" Style="{StaticResource menuButtonText}" />
                     </StackPanel>
                 </Button>
-                <Button Style="{StaticResource menuButton}">
+                <Button Style="{StaticResource menuButton}" Cursor="Hand" x:Name="menuScolariteBtn" Click="menuScolariteBtn_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="Envelope" Style="{StaticResource menuButtonIcon}" />
-                        <TextBlock Text="Messages" Style="{StaticResource menuButtonText}" />
+                        <TextBlock Text="Scolarité" Style="{StaticResource menuButtonText}" />
                     </StackPanel>
                 </Button>
-                <Button Style="{StaticResource menuButton}">
+                <Button Style="{StaticResource menuButton}" Cursor="Hand" x:Name="menuEnseignantsBtn" Click="menuEnseignantsBtn_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="HouseTsunami" Style="{StaticResource menuButtonIcon}" />
-                        <TextBlock Text="Gestion du matériels" Style="{StaticResource menuButtonText}" />
+                        <TextBlock Text="Enseignants" Style="{StaticResource menuButtonText}" />
                     </StackPanel>
                 </Button>
-                <Button Style="{StaticResource menuButton}">
+                <Button Style="{StaticResource menuButton}" Cursor="Hand" x:Name="menuFilieresBtn" Click="menuFilieresBtn_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="ChartArea" Style="{StaticResource menuButtonIcon}" />
-                        <TextBlock Text="Statistiques" Style="{StaticResource menuButtonText}" />
+                        <TextBlock Text="Filières" Style="{StaticResource menuButtonText}" />
                     </StackPanel>
                 </Button>
-                <Button Style="{StaticResource menuButton}">
+                <Button Style="{StaticResource menuButton}" Margin="0 200 0 0" Cursor="Hand" x:Name="menuLogoutBtn" Click="menuLogoutBtn_Click">
                     <StackPanel Orientation="Horizontal">
                         <fa:IconImage Icon="PowerOff" Style="{StaticResource menuButtonIcon}" />
                         <TextBlock Text="Deconnexion" Style="{StaticResource menuButtonText}" />
@@ -98,30 +99,27 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
-                    <RowDefinition Height="200" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
+                
+                <!-- Maximize et Minimize boutons -->
+                <StackPanel Grid.Row="0" x:Name="pnlControlBar" Orientation="Horizontal" FlowDirection="RightToLeft" 
+            Background="Transparent" Margin="0 0 5 0" MouseLeftButtonDown="pnlControlBar_MouseLeftButtonDown" MouseEnter="pnlControlBar_MouseEnter">
+                    <Button x:Name="btnClose" Style="{StaticResource controlBarButton}" Tag="#f2f2f2" Click="btnClose_Click">
+                        <fa:IconImage Icon="Xmark" Style="{StaticResource ControlBarButtonIcon}" />
+                    </Button>
 
-                <!-- Menu du haut -->
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 30 20">
+                    <Button x:Name="btnMaximize" Style="{StaticResource controlBarButton}" Tag="#f2f2f2" Click="btnMaximize_Click">
+                        <fa:IconImage Icon="Square" Style="{StaticResource ControlBarButtonIcon}" />
+                    </Button>
 
-                    <Button Content="Aujourd'hui" Style="{StaticResource topMenuButton}" />
-                    <Button Content="Semaine" Style="{StaticResource topMenuButton}" Background="#31407b" Foreground="#f2f2f2" />
-                    <Button Content="Mois" Style="{StaticResource topMenuButton}" />
-                    <Button Content="Année" Style="{StaticResource topMenuButton}" />
+                    <Button x:Name="btnMinimize" Style="{StaticResource controlBarButton}" Tag="#f2f2f2" Click="btnMinimize_Click">
+                        <fa:IconImage Icon="WindowMinimize" Style="{StaticResource ControlBarButtonIcon}" Width="12" />
+                    </Button>
                 </StackPanel>
 
-                <!-- Titre -->
-                <TextBlock Text="Bienvenu sur ParcInfo" FontSize="26" Foreground="#f2f2f2" HorizontalAlignment="Left" Margin="50 35 0 20" />
-
-                <!--Card Info -->
-                <Grid Grid.Row="1" Margin="50 20 15 40">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                </Grid>
+                <ContentControl x:Name="contentControl" Grid.Row="1" Content="" />
+               
             </Grid>
         </Border>
     </Grid>

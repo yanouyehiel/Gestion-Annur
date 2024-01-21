@@ -17,9 +17,9 @@ namespace Gestion_Annur
 
         private void btnConnectClick(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(txtPassword.Password))
+            /*if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(txtPassword.Password))
             {
-                /*bool result = this.ConnectUser(txtEmail.Text, txtPassword.Password);
+                bool result = this.ConnectUser(txtEmail.Text, txtPassword.Password);
                 if (result)
                 {
                     MessageBox.Show("Identifiants corrects");
@@ -30,14 +30,17 @@ namespace Gestion_Annur
                 else
                 {
                     MessageBox.Show("Identifiants incorrects");
-                }*/
+                }
                 Home h = new Home();
                 h.Show();
             }
             else
             {
                 MessageBox.Show("Veuillez remplir tous les champs !");
-            }
+            }*/
+            Home h = new Home();
+            this.Hide();
+            h.Show();
         }
 
         public bool ConnectUser(string matricule, string password)
@@ -119,5 +122,6 @@ namespace Gestion_Annur
         {
             Application.Current.Shutdown();
         }
+
     }
 }

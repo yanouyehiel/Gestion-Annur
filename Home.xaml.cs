@@ -4,6 +4,7 @@ using System.Windows.Input;
 using System;
 using System.Windows.Media;
 using System.Collections.ObjectModel;
+using Gestion_Annur.Views;
 
 namespace Gestion_Annur
 {
@@ -14,17 +15,11 @@ namespace Gestion_Annur
     {
         public int nbEtudiants = 0;
         private bool isMaximized = false;
+        //Style menuButtonActive = (Style)FindResource("menuButtonActive");
         public Home()
         {
             InitializeComponent();
-
-            nbEtudiants = this.Count_Etudiants();
-            var converter = new BrushConverter();
-            ObservableCollection<Etudiant> etudiants = new ObservableCollection<Etudiant>();
-
-            //Insertion des donnees dans le DataGrid
-            etudiants.Add(new Etudiant { Number="1", Matricule = "ANR-001", Character = "E", BgColor = (Brush)converter.ConvertFromString("#0a13ec"), Diplome = "BTS", Email = "yanou.yehiel@yahoo.com", Filiere = "LP GL", Nom = "Yanou Yehiel", Telephone = "695707732" });
-            etudiantsDataGrid.ItemsSource = etudiants;
+            contentControl.Content = new DashboardView();
         }
 
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
@@ -93,6 +88,74 @@ namespace Gestion_Annur
                     isMaximized = true;
                 }
             }
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void pnlControlBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void pnlControlBar_MouseEnter(object sender, MouseEventArgs e)
+        {
+            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void btnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void btnMaximize_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Normal)
+                this.WindowState = WindowState.Maximized;
+            else this.WindowState = WindowState.Normal;
+        }
+
+
+        private void menuDashboardBtn_Click(object sender, RoutedEventArgs e)
+        {
+            contentControl.Content = new DashboardView();
+        }
+
+        private void menuEtudiantsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            contentControl.Content = new EtudiantsView();
+        }
+
+        private void menuScolariteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            contentControl.Content = new ScolariteView();
+        }
+
+        private void menuEnseignantsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            contentControl.Content = new EnseignantsView();
+        }
+
+        private void menuFilieresBtn_Click(object sender, RoutedEventArgs e)
+        {
+            contentControl.Content = new FilieresView();
+        }
+
+        private void menuLogoutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            MainWindow m = new MainWindow();
+            m.Show();
         }
     }
 

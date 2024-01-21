@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Gestion_Annur
+namespace Gestion_Annur.Views
 {
     /// <summary>
-    /// Logique d'interaction pour ModalAddStudent.xaml
+    /// Logique d'interaction pour ScolariteView.xaml
     /// </summary>
-    public partial class ModalAddStudent : Window
+    public partial class ScolariteView : UserControl
     {
-        public ModalAddStudent()
+        public ScolariteView()
         {
             InitializeComponent();
         }

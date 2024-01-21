@@ -32,7 +32,7 @@
                 </Canvas>
 
                 <StackPanel VerticalAlignment="Center">
-                    <TextBlock Text="ANNUR" Style="{StaticResource titleText}" />
+                    <TextBlock Text="ANNUR" Style="{StaticResource titleText}" HorizontalAlignment="Center" />
                     <TextBlock Text="Logiciel de gestion des etudiants du centre de formation ANNUR" Style="{StaticResource normalText}" Opacity="0.8" Margin="20 30" />
                     <Button Content="Creer un compte" Style="{StaticResource button}" />
                 </StackPanel>
@@ -41,7 +41,7 @@
 
         <Border Background="#ffffff" Grid.Column="1" CornerRadius="0 10 10 0" MouseDown="Border_MouseDown">
             <StackPanel VerticalAlignment="Center">
-                <TextBlock Text="Connexion" Style="{StaticResource titleText}" Margin="0 40 0 0" Foreground="#0a13ec" />
+                <TextBlock Text="Connexion" HorizontalAlignment="Center" Style="{StaticResource titleText}" Margin="0 40 0 0" Foreground="#0a13ec" />
                 <StackPanel Orientation="Horizontal" Margin="0 20" HorizontalAlignment="Center">
                     <Button Style="{StaticResource buttonCircle}">
                         <Image Source="/images/facebook.png" Width="20" Height="20" />
@@ -82,7 +82,7 @@
                     </Grid>
                 </Border>
 
-                <Button Content="Se Connecter" Style="{StaticResource button2}" Click="btnConnectClick" />
+                <Button Content="Se Connecter" Style="{StaticResource button2}" Click="btnConnectClick"/>
             </StackPanel>
         </Border>
     </Grid>
